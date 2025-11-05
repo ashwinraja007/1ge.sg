@@ -23,7 +23,7 @@ const About1 = () => {
         .about-section {
           overflow-x: hidden;
           background: #fff;
-          background-image: none !important; /* remove dotted pattern bg */
+          background-image: none !important;
         }
 
         .about-wrapper { width: 100%; }
@@ -53,18 +53,6 @@ const About1 = () => {
           gap: var(--gap);
           margin-bottom: 28px;
           position: relative;
-        }
-
-        /* Dotted connector line */
-        .about-items:not(:last-child)::after {
-          content: "";
-          position: absolute;
-          left: calc(var(--icon-size) / 2);
-          top: calc(var(--icon-size) + 4px);
-          width: 2px;
-          height: calc(100% - var(--icon-size) - 10px);
-          border-left: 2px dotted var(--accent);
-          opacity: 0.6;
         }
 
         .about-items:last-child { margin-bottom: 0; }
@@ -109,11 +97,6 @@ const About1 = () => {
           .about-content .section-title h2 { font-size: 26px; }
           .about-items { flex-direction: row; align-items: flex-start; }
           .about-items .icon { width: 52px; height: 52px; }
-          .about-items:not(:last-child)::after {
-            left: 26px;
-            top: 56px;
-            height: 50%;
-          }
         }
       `}</style>
 
