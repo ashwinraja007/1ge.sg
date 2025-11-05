@@ -8,22 +8,11 @@ const About1 = () => {
     loadBackgroudImages();
   }, []);
 
-  const logos = [
-    { img: "/logosss01.png", alt: "Global Gateway Logistics", link: "https://www.ggl.sg/" },
-    { img: "/logosss03.png", alt: "OECL Supply Chain", link: "https://www.oecl.sg/" },
-    { img: "/logosss02.png", alt: "Global Consol", link: "https://www.globalconsol.com/" },
-    { img: "/Haixun_logo.png", alt: "Hai Xun Logistics", link: "https://www.haixun.co/" },
-    { img: "/one.png", alt: "ONE Global Logistics", link: "https://www.onegloballogistics.co/" },
-    { img: "/logosss04.png", alt: "Moltech Energy", link: "https://www.moltechglobal.com/" },
-    { img: "/logosss05.png", alt: "CityGn Distribution", link: "https://www.citygnenergy.com/" },
-    { img: "/logo-2.png", alt: "Future Net Logistics", link: "https://futurenetlogistics.com/" },
-  ];
-
   return (
     <section
       className="about-section bg-cover"
       data-background="/about-bg.png"
-      style={{ padding: "80px 0 0", overflow: "hidden" }}
+      style={{ padding: "80px 0", overflow: "hidden" }}
     >
       <style>{`
         :root {
@@ -32,16 +21,30 @@ const About1 = () => {
           --muted:#444;
         }
 
-        .about-section { overflow-x: hidden; background: #fff; }
+        .about-section {
+          overflow-x: hidden;
+          background: #fff;
+          background-image: none !important; /* remove dotted hex background */
+        }
+
         .about-wrapper { width: 100%; }
         .about-row { display: flex; flex-wrap: wrap; }
 
         /* ===== Left image ===== */
         .about-image-col { padding-right: 16px; }
-        .about-photo-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
+        .about-photo-wrap {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         .about-photo {
-          display: block; width: 100%; height: auto; object-fit: contain; object-position: center;
-          border-radius: 12px; border: 2px solid #e6eef3;
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 12px;
+          border: 2px solid #e6eef3;
           box-shadow: 0 8px 24px rgba(0,0,0,.08);
           background: #fff;
         }
@@ -56,11 +59,7 @@ const About1 = () => {
           line-height: 1.15;
         }
 
-        .about-area::before,
-        .about-area::after { display: none !important; content: none !important; }
-        .about-area .line-image { display: none !important; }
-
-        /* ===== Perfectly aligned icons ===== */
+        /* ===== Icon & Text alignment ===== */
         .about-area {
           --icon-size: 58px;
           --gap: 18px;
@@ -112,52 +111,6 @@ const About1 = () => {
           font-size: 15.5px;
         }
 
-        /* ===== Group Companies Grid (No Scroll) ===== */
-        .brand-block {
-          margin-top: 60px;
-          padding: 20px 0 0;
-          background: transparent !important;
-          border-radius: 0 !important;
-          box-shadow: none !important;
-          border: none !important;
-          position: relative;
-        }
-
-        .brand-title {
-          text-align: center;
-          margin: 0 0 24px;
-          font-size: 30px;
-          font-weight: 800;
-          color: var(--ink);
-        }
-
-        .brand-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-          gap: 24px;
-          justify-items: center;
-          align-items: center;
-          max-width: 1000px;
-          margin: 0 auto;
-        }
-
-        .brand-logo {
-          max-height: 100px;
-          width: auto;
-          object-fit: contain;
-          display: block;
-          transition: transform 0.25s ease, filter 0.25s ease;
-          background: transparent !important;
-          mix-blend-mode: multiply;
-        }
-
-        .brand-logo:hover {
-          transform: scale(1.05);
-          filter: brightness(1.1);
-        }
-
-        .brand-link { display: inline-flex; align-items: center; justify-content: center; }
-
         /* ===== Responsive layout ===== */
         @media (max-width: 1199px) {
           .about-row { flex-direction: column !important; }
@@ -168,11 +121,8 @@ const About1 = () => {
 
         @media (max-width: 575px) {
           .about-content .section-title h2 { font-size: 26px; }
-          .brand-title { font-size: 24px; margin-bottom: 18px; }
           .about-items { flex-direction: row; align-items: flex-start; }
           .about-items .icon { width: 52px; height: 52px; }
-          .brand-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 18px; }
-          .brand-logo { max-height: 80px; }
         }
       `}</style>
 
@@ -203,7 +153,10 @@ const About1 = () => {
                     <div className="icon"><Users2 /></div>
                     <div className="content">
                       <h5>Who We Are</h5>
-                      <p>A diversified group with interests in Shipping, Logistics, Distribution, IT, Clean Energy &amp; Trading.</p>
+                      <p>
+                        A diversified group with interests in Shipping, Logistics,
+                        Distribution, IT, Clean Energy &amp; Trading.
+                      </p>
                     </div>
                   </div>
 
@@ -219,7 +172,10 @@ const About1 = () => {
                     <div className="icon"><BadgeCheck /></div>
                     <div className="content">
                       <h5>Expertise</h5>
-                      <p>Each business unit is led by experts ensuring sustainability, execution &amp; growth.</p>
+                      <p>
+                        Each business unit is led by experts ensuring sustainability,
+                        execution &amp; growth.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -227,24 +183,7 @@ const About1 = () => {
             </div>
           </div>
 
-          {/* Group Companies Grid */}
-          <div className="brand-block">
-            <h3 className="brand-title">Group Companies</h3>
-            <div className="brand-grid">
-              {logos.map((item, i) => (
-                <a
-                  key={i}
-                  className="brand-link"
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`Open ${item.alt}`}
-                >
-                  <img src={item.img} alt={item.alt} className="brand-logo" loading="lazy" />
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Group Companies REMOVED */}
         </div>
       </div>
     </section>
