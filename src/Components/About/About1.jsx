@@ -33,9 +33,9 @@ const About1 = () => {
     responsive: [
       { breakpoint: 1399, settings: { slidesToShow: 5 } },
       { breakpoint: 1199, settings: { slidesToShow: 4 } },
-      { breakpoint: 991,  settings: { slidesToShow: 3 } },
-      { breakpoint: 767,  settings: { slidesToShow: 2, centerMode: true, centerPadding: "10px" } },
-      { breakpoint: 575,  settings: { slidesToShow: 1, centerMode: true, centerPadding: "16px" } },
+      { breakpoint: 991, settings: { slidesToShow: 3 } },
+      { breakpoint: 767, settings: { slidesToShow: 2, centerMode: true, centerPadding: "10px" } },
+      { breakpoint: 575, settings: { slidesToShow: 1, centerMode: true, centerPadding: "16px" } },
     ],
   };
 
@@ -61,56 +61,76 @@ const About1 = () => {
         .about-photo-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
         .about-photo {
           display: block; width: 100%; height: auto; object-fit: contain; object-position: center;
-          border-radius: 12px; border: 2px solid #e6eef3; box-shadow: 0 8px 24px rgba(0,0,0,.08); background: #fff;
+          border-radius: 12px; border: 2px solid #e6eef3;
+          box-shadow: 0 8px 24px rgba(0,0,0,.08);
+          background: #fff;
         }
 
         /* ===== Right column ===== */
         .about-text-col { padding-left: 16px; position: relative; z-index: 2; }
         .about-content .section-title h2 {
-          margin-bottom: 16px; color: var(--ink); font-weight: 800; font-size: 34px; line-height: 1.15;
+          margin-bottom: 16px;
+          color: var(--ink);
+          font-weight: 800;
+          font-size: 34px;
+          line-height: 1.15;
         }
 
-        /* Remove any theme pseudo elements */
+        /* Remove theme pseudo-elements */
         .about-area::before,
         .about-area::after { display: none !important; content: none !important; }
         .about-area .line-image { display: none !important; }
 
-        /* ===== PERFECT ALIGNMENT BLOCK ===== */
-        /* Use a grid: [icon | text] with shared variables */
+        /* ===== Perfectly aligned icon list ===== */
         .about-area {
-          --icon: 56px;     /* icon circle size */
-          --gap:  16px;     /* space between icon and text */
+          --icon-size: 58px;
+          --gap: 18px;
         }
 
-        /* Align the section title to the text column (not the icon) on >=576px */
-        @media (min-width: 576px) {
-          .about-content .section-title { margin-left: calc(var(--icon) + var(--gap)); }
-        }
-
-        /* Each row: icon column + text column */
         .about-items {
-          display: grid;
-          grid-template-columns: var(--icon) 1fr;
-          column-gap: var(--gap);
-          align-items: center;             /* vertically center icon with its text block */
-          margin: 0 0 18px;
+          display: flex;
+          align-items: center;
+          gap: var(--gap);
+          margin-bottom: 28px;
         }
+
         .about-items:last-child { margin-bottom: 0; }
 
         .about-items .icon {
-          width: var(--icon); height: var(--icon);
+          flex-shrink: 0;
+          width: var(--icon-size);
+          height: var(--icon-size);
           border-radius: 50%;
-          background-color: var(--accent);
-          display: flex; align-items: center; justify-content: center;
+          background: var(--accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           box-shadow: 0 4px 10px rgba(38,182,224,.35);
+          transform: translateY(2px);
         }
-        .about-items .icon svg { width: 24px; height: 24px; color: #fff; }
+
+        .about-items .icon svg {
+          width: 26px;
+          height: 26px;
+          color: #fff;
+        }
+
+        .about-items .content {
+          flex: 1;
+        }
 
         .about-items .content h5 {
-          font-weight: 800; margin: 0 0 6px; color: var(--ink);
+          font-weight: 800;
+          margin: 0 0 6px;
+          color: var(--ink);
+          line-height: 1.2;
         }
+
         .about-items .content p {
-          margin: 0; line-height: 1.6; color: var(--muted); font-size: 15.5px;
+          margin: 0;
+          color: var(--muted);
+          line-height: 1.6;
+          font-size: 15.5px;
         }
 
         /* ===== Group Companies ===== */
@@ -127,10 +147,20 @@ const About1 = () => {
         .brand-block::after { content: none !important; }
 
         .brand-title {
-          text-align: center; margin: 0 0 18px; font-size: 30px; font-weight: 800; color: var(--ink);
+          text-align: center;
+          margin: 0 0 18px;
+          font-size: 30px;
+          font-weight: 800;
+          color: var(--ink);
         }
 
-        .brand-slider-wrap { max-width: 1200px; margin: 0 auto; padding: 0; line-height: 0; }
+        .brand-slider-wrap {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0;
+          line-height: 0;
+        }
+
         .brand-slider-wrap .slick-slider,
         .brand-slider-wrap .slick-list,
         .brand-slider-wrap .slick-track,
@@ -139,28 +169,44 @@ const About1 = () => {
         .brand-slider-wrap .slick-dots {
           background: transparent !important;
         }
-        .brand-slider-wrap .slick-list { -webkit-backface-visibility: hidden; backface-visibility: hidden; overflow: visible; }
-        .brand-slider-wrap .slick-track { display: flex; align-items: center; }
 
-        .brand-slide { display: flex; align-items: center; justify-content: center; height: 150px; }
+        .brand-slider-wrap .slick-list {
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          overflow: visible;
+        }
+
+        .brand-slider-wrap .slick-track {
+          display: flex;
+          align-items: center;
+        }
+
+        .brand-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 150px;
+        }
 
         .brand-logo {
-          max-height: 120px; width: auto; object-fit: contain; display: block;
+          max-height: 120px;
+          width: auto;
+          object-fit: contain;
+          display: block;
           transition: transform 0.25s ease, filter 0.25s ease;
           background: transparent !important;
           mix-blend-mode: multiply;
           pointer-events: none;
         }
+
         .brand-logo:hover { transform: scale(1.08); filter: brightness(1.08); }
         .brand-link { display: inline-flex; align-items: center; justify-content: center; }
 
-        /* ===== Responsive layout rules ===== */
-        /* Stack until 1199px so iPad/1024 show image on top */
+        /* ===== Responsive layout ===== */
         @media (max-width: 1199px) {
           .about-row { flex-direction: column !important; }
           .about-image-col { order: 1 !important; padding-right: 0; }
           .about-text-col  { order: 2 !important; padding-left: 0; margin-top: 24px; }
-          /* Keep left alignment for neat column look */
           .about-content, .about-items .content { text-align: left; }
           .brand-slide { height: 120px; }
           .brand-logo { max-height: 100px; }
@@ -168,9 +214,9 @@ const About1 = () => {
 
         @media (max-width: 575px) {
           .about-content .section-title h2 { font-size: 26px; }
-          /* On very small phones, don't indent the title */
-          .about-content .section-title { margin-left: 0; }
           .brand-title { font-size: 24px; margin-bottom: 14px; }
+          .about-items { flex-direction: row; align-items: flex-start; }
+          .about-items .icon { width: 52px; height: 52px; }
           .brand-slide { height: 96px; }
           .brand-logo { max-height: 78px; mix-blend-mode: darken; }
         }
@@ -179,7 +225,7 @@ const About1 = () => {
       <div className="container-fluid" style={{ paddingLeft: 0, paddingRight: 0 }}>
         <div className="about-wrapper">
           <div className="row g-4 align-items-center mx-0 about-row">
-            {/* Image */}
+            {/* Left Image */}
             <div className="col-12 col-xl-7 about-image-col d-flex">
               <div className="about-photo-wrap w-100">
                 <img
@@ -191,7 +237,7 @@ const About1 = () => {
               </div>
             </div>
 
-            {/* Text */}
+            {/* Right Text */}
             <div className="col-12 col-xl-5 about-text-col">
               <div className="about-content pe-xl-4 ps-xl-2 px-3 px-xl-0">
                 <div className="section-title">
