@@ -74,8 +74,7 @@ const Footer1 = () => {
         <div className="footer-bottom">
           <p>© 1 Global Enterprises, All Rights Reserved.</p>
           <ul>
-            <li><Link to="/terms">Terms of Use</Link></li>
-            <li><Link to="/privacy">Privacy & Environmental Policy</Link></li>
+            
           </ul>
         </div>
       </div>
