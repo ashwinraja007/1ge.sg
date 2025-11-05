@@ -15,7 +15,7 @@ const ServicesVideoSection = ({
   return (
     <section className="svs-section">
       <div className="svs-container">
-        {/* LEFT CONTENT */}
+        {/* LEFT */}
         <div className="svs-left">
           <header className="svs-header">
             <p className="svs-sub">{subheading}</p>
@@ -34,7 +34,7 @@ const ServicesVideoSection = ({
           </div>
         </div>
 
-        {/* RIGHT — BIG 16:9 VIDEO */}
+        {/* RIGHT — VIDEO */}
         <div className="svs-right">
           <div className="svs-video">
             <video
@@ -56,14 +56,13 @@ const ServicesVideoSection = ({
           padding: 70px 0;
         }
 
-        /* Two-column layout */
         .svs-container {
           display: grid;
-          grid-template-columns: 0.8fr 1.2fr; /* Larger video portion */
+          grid-template-columns: 0.8fr 1.2fr;
           width: min(1400px, 94%);
           margin: 0 auto;
           align-items: center;
-          gap: 30px;
+          gap: 28px;
         }
 
         /* LEFT SIDE */
@@ -74,55 +73,54 @@ const ServicesVideoSection = ({
         }
 
         .svs-header {
-          margin-bottom: 12px;
+          margin-bottom: 10px;
         }
 
         .svs-sub {
-          margin: 0 0 4px;
-          font-size: 0.95rem;
+          margin: 0;
+          font-size: 0.9rem;
           color: #5f6b7a;
-          line-height: 1.4;
         }
 
         .svs-title {
-          margin: 0;
-          font-size: clamp(2rem, 1.3rem + 2vw, 2.8rem);
+          margin: 4px 0;
+          font-size: clamp(2rem, 1.2rem + 2vw, 2.6rem);
           font-weight: 800;
           color: #0E0F2C;
           line-height: 1.1;
         }
 
-        /* VERTICALS LIST */
+        /* Tighter List */
         .svs-list {
           display: flex;
           flex-direction: column;
-          gap: 8px; /* tighter spacing */
-          margin-top: 16px;
-          max-width: 500px;
+          gap: 6px; /* minimal vertical space */
+          margin-top: 10px;
+          max-width: 460px;
         }
 
         .svs-item {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 10px 14px; /* reduced height padding */
-          border: 1px solid #e5edf5;
-          border-radius: 10px;
+          gap: 8px;
+          padding: 8px 12px; /* very compact */
+          border: 1px solid #e6edf5;
+          border-radius: 8px;
           background: #f8fcff;
-          transition: all 0.25s ease;
+          transition: all 0.2s ease;
         }
 
         .svs-item:hover {
           transform: translateY(-1px);
-          box-shadow: 0 6px 15px rgba(10, 40, 80, 0.08);
+          box-shadow: 0 4px 12px rgba(10, 40, 80, 0.08);
           border-color: #c9e4f5;
           background: #f4fbff;
         }
 
         .svs-icon {
-          flex: 0 0 38px;
-          width: 38px;
-          height: 38px;
+          flex: 0 0 34px;
+          width: 34px;
+          height: 34px;
           border-radius: 8px;
           display: grid;
           place-items: center;
@@ -132,18 +130,18 @@ const ServicesVideoSection = ({
         }
 
         .svs-icon svg {
-          width: 18px;
-          height: 18px;
+          width: 16px;
+          height: 16px;
         }
 
         .svs-item-title {
-          font-weight: 700;
+          font-weight: 600;
           color: #0E0F2C;
-          font-size: 0.95rem;
-          line-height: 1.4;
+          font-size: 0.9rem;
+          line-height: 1.3;
         }
 
-        /* RIGHT SIDE - Full 16:9 video */
+        /* RIGHT SIDE — BIGGER 16:9 VIDEO */
         .svs-right {
           display: flex;
           align-items: center;
@@ -154,7 +152,7 @@ const ServicesVideoSection = ({
           position: relative;
           width: 100%;
           aspect-ratio: 16 / 9;
-          border-radius: 18px;
+          border-radius: 16px;
           overflow: hidden;
           background: #000;
           box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
@@ -165,10 +163,10 @@ const ServicesVideoSection = ({
           inset: 0;
           width: 100%;
           height: 100%;
-          object-fit: cover; /* fills perfectly, no bars */
+          object-fit: cover;
         }
 
-        /* RESPONSIVE STYLES */
+        /* RESPONSIVE */
         @media (min-width: 1536px) {
           .svs-container {
             grid-template-columns: 0.7fr 1.3fr;
@@ -178,13 +176,12 @@ const ServicesVideoSection = ({
         @media (max-width: 1024px) {
           .svs-container {
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 22px;
           }
           .svs-right {
             order: -1;
           }
           .svs-video {
-            aspect-ratio: 16 / 9;
             border-radius: 12px;
           }
           .svs-left {
@@ -192,8 +189,8 @@ const ServicesVideoSection = ({
             text-align: center;
           }
           .svs-list {
+            max-width: 400px;
             width: 100%;
-            max-width: 420px;
           }
         }
 
