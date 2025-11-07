@@ -22,7 +22,7 @@ const SERVICES = [
     title: "Renewable Energy",
     description:
       "We drive sustainable growth through strategic investments across the renewable energy value chain — from feedstock origination to processing and technology enablement. Our portfolio supports the global shift toward renewable fuels and SAF by securing and optimising advanced feedstock supply. Operating across multiple regions, we build ethical, traceable sourcing networks and pre-treatment infrastructure, strengthening transparency, efficiency, and environmental integrity while accelerating the transition to cleaner energy.",
-    cover: "/animalfeed.jpg",
+    cover: "/renew.jpeg",
     logos: [
       { img: "/logosss04.png", alt: "Moltech", link: "https://moltechglobal.com/" },
       { img: "/molgen.png", alt: "MoltechGen", link: "https://moltechglobal.com/" },
