@@ -199,9 +199,9 @@ export const COUNTRIES = [
     priority: 0,
     code: "sg",
     name: "Singapore (Headquarters)",
-    lat: 1.3521,
-    lng: 103.8198,
-    cities: [
+    lat: 1.271214098103129,
+    lng: 103.82845440127207,
+    cities: [  
       {
         name: "Singapore – Headquarters",
         lat: 1.3521,
