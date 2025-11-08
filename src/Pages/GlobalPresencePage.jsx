@@ -26,21 +26,26 @@ const GlobalPresencePage = () => {
     });
   }, [isIndiaPage]);
 
-  const [expandedCountry, setExpandedCountry] = useState<string | null>(countries[0]?.code ?? null);
-  const [selectedCountryCode, setSelectedCountryCode] = useState<string | null>(countries[0]?.code ?? null);
-  const [selectedCity, setSelectedCity] = useState<any>(countries[0]?.cities?.[0] ?? null);
+  const [expandedCountry, setExpandedCountry] = useState(
+    countries[0]?.code ?? null
+  );
+  const [selectedCountryCode, setSelectedCountryCode] = useState(
+    countries[0]?.code ?? null
+  );
+  const [selectedCity, setSelectedCity] = useState(
+    countries[0]?.cities?.[0] ?? null
+  );
 
-  // NEW: when a country (not a city) is focused, store a center+zoom override
-  const [overrideView, setOverrideView] = useState<{lat:number; lng:number; zoom:number} | null>(null);
-
-  const [mobileView, setMobileView] = useState<"sidebar" | "map" | "combined">("sidebar");
+  // JS-only version: no type annotations
+  const [overrideView, setOverrideView] = useState(null);
+  const [mobileView, setMobileView] = useState("sidebar");
 
   useEffect(() => {
     if (countries.length) {
       setExpandedCountry(countries[0].code);
       setSelectedCountryCode(countries[0].code);
       setSelectedCity(countries[0].cities[0]);
-      setOverrideView(null); // reset
+      setOverrideView(null);
     }
   }, [countries]);
 
@@ -49,7 +54,7 @@ const GlobalPresencePage = () => {
     else if (mobileView === "combined") setMobileView("sidebar");
   }, [isMobile, mobileView]);
 
-  const handleToggleCountry = (code: string) => {
+  const handleToggleCountry = (code) => {
     if (expandedCountry === code) {
       setExpandedCountry(null);
       return;
@@ -59,49 +64,36 @@ const GlobalPresencePage = () => {
 
     const country = countries.find((c) => c.code === code);
     if (country?.cities?.length) {
-      setSelectedCity(country.cities[0]); // choose first city by default
-      setOverrideView(null);              // city view takes precedence
+      setSelectedCity(country.cities[0]);
+      setOverrideView(null);
     } else {
       setSelectedCity(null);
-      // no city? fall back to country center (set via onFocusCountry below)
     }
   };
 
-  const handleSelectCity = (countryCode: string, city: any) => {
+  const handleSelectCity = (countryCode, city) => {
     setExpandedCountry(countryCode);
     setSelectedCountryCode(countryCode);
     setSelectedCity(city);
-    setOverrideView(null); // clear country override so city lat/lng is used
+    setOverrideView(null);
   };
 
-  // NEW: handle focusing a country from the sidebar using computed center/zoom
-  const handleFocusCountry = ({
-    center,
-    suggestedZoom,
-    country,
-  }: {
-    center: { lat: number; lng: number };
-    suggestedZoom: number;
-    country: any;
-  }) => {
+  const handleFocusCountry = ({ center, suggestedZoom, country }) => {
     setSelectedCountryCode(country.code);
     setSelectedCity(null);
     setOverrideView({ lat: center.lat, lng: center.lng, zoom: suggestedZoom });
   };
 
   const coordinates = useMemo(() => {
-    // 1) city selected → use city coords
     if (selectedCity) {
-      return { lat: selectedCity.lat, lng: selectedCity.lng, zoom: 13 }; // a bit closer for cities
+      return { lat: selectedCity.lat, lng: selectedCity.lng, zoom: 13 };
     }
-    // 2) explicit country focus override (center + suggested zoom)
     if (overrideView) return overrideView;
-
-    // 3) fallback to country anchor coords
-    const fallbackCountry = countries.find((c) => c.code === selectedCountryCode);
-    if (fallbackCountry) return { lat: fallbackCountry.lat, lng: fallbackCountry.lng, zoom: 5 };
-
-    // 4) final fallback (Singapore-ish world view)
+    const fallbackCountry = countries.find(
+      (c) => c.code === selectedCountryCode
+    );
+    if (fallbackCountry)
+      return { lat: fallbackCountry.lat, lng: fallbackCountry.lng, zoom: 5 };
     return { lat: 1.3521, lng: 103.8198, zoom: 3 };
   }, [countries, selectedCity, selectedCountryCode, overrideView]);
 
@@ -127,10 +119,21 @@ const GlobalPresencePage = () => {
       )}
 
       <section className="global-presence-layout">
-        <div className={`global-map-section${isMobile && mobileView !== "map" ? " hidden-mobile" : ""}`}>
-          <ContactMapContainer coordinates={coordinates} selectedCity={selectedCity} />
+        <div
+          className={`global-map-section${
+            isMobile && mobileView !== "map" ? " hidden-mobile" : ""
+          }`}
+        >
+          <ContactMapContainer
+            coordinates={coordinates}
+            selectedCity={selectedCity}
+          />
         </div>
-        <div className={`global-sidebar-section${isMobile && mobileView !== "sidebar" ? " hidden-mobile" : ""}`}>
+        <div
+          className={`global-sidebar-section${
+            isMobile && mobileView !== "sidebar" ? " hidden-mobile" : ""
+          }`}
+        >
           <ContactSidebar
             countries={countries}
             expandedCountry={expandedCountry}
@@ -138,7 +141,7 @@ const GlobalPresencePage = () => {
             onSelectCity={handleSelectCity}
             selectedCity={selectedCity}
             selectedCountryCode={selectedCountryCode}
-            onFocusCountry={handleFocusCountry}   // <-- pass it down
+            onFocusCountry={handleFocusCountry}
           />
         </div>
       </section>
