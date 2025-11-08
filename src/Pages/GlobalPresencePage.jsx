@@ -21,7 +21,9 @@ const GlobalPresencePage = () => {
     return [...filtered].sort((a, b) => {
       const priorityA = a.priority ?? 1;
       const priorityB = b.priority ?? 1;
-      if (priorityA !== priorityB) return priorityA - priorityB;
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
       return a.name.localeCompare(b.name);
     });
   }, [isIndiaPage]);
@@ -35,9 +37,6 @@ const GlobalPresencePage = () => {
   const [selectedCity, setSelectedCity] = useState(
     countries[0]?.cities?.[0] ?? null
   );
-
-  // JS-only version: no type annotations
-  const [overrideView, setOverrideView] = useState(null);
   const [mobileView, setMobileView] = useState("sidebar");
 
   useEffect(() => {
@@ -45,13 +44,15 @@ const GlobalPresencePage = () => {
       setExpandedCountry(countries[0].code);
       setSelectedCountryCode(countries[0].code);
       setSelectedCity(countries[0].cities[0]);
-      setOverrideView(null);
     }
   }, [countries]);
 
   useEffect(() => {
-    if (!isMobile) setMobileView("combined");
-    else if (mobileView === "combined") setMobileView("sidebar");
+    if (!isMobile) {
+      setMobileView("combined");
+    } else if (mobileView === "combined") {
+      setMobileView("sidebar");
+    }
   }, [isMobile, mobileView]);
 
   const handleToggleCountry = (code) => {
@@ -59,13 +60,13 @@ const GlobalPresencePage = () => {
       setExpandedCountry(null);
       return;
     }
+
     setExpandedCountry(code);
     setSelectedCountryCode(code);
 
-    const country = countries.find((c) => c.code === code);
+    const country = countries.find((item) => item.code === code);
     if (country?.cities?.length) {
       setSelectedCity(country.cities[0]);
-      setOverrideView(null);
     } else {
       setSelectedCity(null);
     }
@@ -75,27 +76,22 @@ const GlobalPresencePage = () => {
     setExpandedCountry(countryCode);
     setSelectedCountryCode(countryCode);
     setSelectedCity(city);
-    setOverrideView(null);
-  };
-
-  const handleFocusCountry = ({ center, suggestedZoom, country }) => {
-    setSelectedCountryCode(country.code);
-    setSelectedCity(null);
-    setOverrideView({ lat: center.lat, lng: center.lng, zoom: suggestedZoom });
   };
 
   const coordinates = useMemo(() => {
     if (selectedCity) {
-      return { lat: selectedCity.lat, lng: selectedCity.lng, zoom: 13 };
+      return {
+        lat: selectedCity.lat,
+        lng: selectedCity.lng,
+        zoom: 11,
+      };
     }
-    if (overrideView) return overrideView;
-    const fallbackCountry = countries.find(
-      (c) => c.code === selectedCountryCode
-    );
-    if (fallbackCountry)
+    const fallbackCountry = countries.find((item) => item.code === selectedCountryCode);
+    if (fallbackCountry) {
       return { lat: fallbackCountry.lat, lng: fallbackCountry.lng, zoom: 5 };
+    }
     return { lat: 1.3521, lng: 103.8198, zoom: 3 };
-  }, [countries, selectedCity, selectedCountryCode, overrideView]);
+  }, [countries, selectedCity, selectedCountryCode]);
 
   return (
     <div className="global-presence-page">
@@ -141,7 +137,6 @@ const GlobalPresencePage = () => {
             onSelectCity={handleSelectCity}
             selectedCity={selectedCity}
             selectedCountryCode={selectedCountryCode}
-            onFocusCountry={handleFocusCountry}
           />
         </div>
       </section>
