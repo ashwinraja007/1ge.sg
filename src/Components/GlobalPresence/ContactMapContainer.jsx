@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 import { RefreshCw, Maximize2, Minimize2 } from "lucide-react";
 
-/**
- * If you want to use your custom My Map link, use the "view" version,
- * not the "edit" version, otherwise the iframe will show an auth error.
- * Convert your URL:
- * https://www.google.com/maps/d/edit?mid=XXXXX
- * ⟶
- * https://www.google.com/maps/d/u/0/embed?mid=XXXXX
- */
 const MY_MAP_URL =
   "https://www.google.com/maps/d/u/0/embed?mid=1CGPTRpMsSQAva-KitDXZTYiMv1mHnDA";
 
-const ContactMapContainer = ({ selectedCity, hideChrome = false }) => {
+// Simple dynamic Google Maps embed builder
+const buildSimpleEmbedUrl = ({ lat, lng, zoom }) =>
+  `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
+
+const ContactMapContainer = ({
+  coordinates = null,
+  selectedCity,
+  hideChrome = false,
+}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [mapVersion, setMapVersion] = useState(0);
+  const [mapType, setMapType] = useState("auto"); // "auto" | "custom"
 
-  // Each refresh increments version to reload iframe
-  const mapUrl = `${MY_MAP_URL}&v=${mapVersion}`;
+  // Compute which map URL to show
+  const mapUrl = coordinates
+    ? buildSimpleEmbedUrl(coordinates)
+    : MY_MAP_URL + `&v=${mapVersion}`;
 
   useEffect(() => {
     setIsLoaded(false);
-  }, [mapVersion]);
+    setMapVersion((v) => v + 1);
+    setMapType(coordinates ? "auto" : "custom");
+  }, [coordinates]);
 
   return (
     <div className={`global-map-card${isFullScreen ? " fullscreen" : ""}`}>
       {!hideChrome && (
         <div className="global-map-header">
           <div>
-            <h3>Interactive Global Presence Map</h3>
+            <h3>
+              {mapType === "custom"
+                ? "Interactive Global Presence Map"
+                : "Location Map"}
+            </h3>
             {selectedCity && (
               <p>
                 Viewing: <span>{selectedCity.name}</span>
@@ -57,11 +66,11 @@ const ContactMapContainer = ({ selectedCity, hideChrome = false }) => {
           </div>
         )}
 
-        {/* Your Custom Google My Map Embed */}
+        {/* Dynamically switch map source */}
         <iframe
           key={mapVersion}
           src={mapUrl}
-          title="Global Presence Map"
+          title="Global Map"
           allowFullScreen
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
