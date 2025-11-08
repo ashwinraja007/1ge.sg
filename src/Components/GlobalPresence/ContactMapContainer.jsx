@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 import { RefreshCw, Maximize2, Minimize2 } from "lucide-react";
 
-const buildSimpleEmbedUrl = ({ lat, lng, zoom }) =>
-  `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
+/**
+ * If you want to use your custom My Map link, use the "view" version,
+ * not the "edit" version, otherwise the iframe will show an auth error.
+ * Convert your URL:
+ * https://www.google.com/maps/d/edit?mid=XXXXX
+ * ⟶
+ * https://www.google.com/maps/d/u/0/embed?mid=XXXXX
+ */
+const MY_MAP_URL =
+  "https://www.google.com/maps/d/u/0/embed?mid=1CGPTRpMsSQAva-KitDXZTYiMv1mHnDA";
 
-const ContactMapContainer = ({ coordinates, selectedCity, hideChrome = false }) => {
+const ContactMapContainer = ({ selectedCity, hideChrome = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [mapVersion, setMapVersion] = useState(0);
 
-  const { lat, lng, zoom } = coordinates;
+  // Each refresh increments version to reload iframe
+  const mapUrl = `${MY_MAP_URL}&v=${mapVersion}`;
 
   useEffect(() => {
     setIsLoaded(false);
-    setMapVersion((v) => v + 1);
-  }, [lat, lng, zoom]);
-
-  const mapUrl = buildSimpleEmbedUrl({ lat, lng, zoom });
+  }, [mapVersion]);
 
   return (
     <div className={`global-map-card${isFullScreen ? " fullscreen" : ""}`}>
@@ -51,11 +57,11 @@ const ContactMapContainer = ({ coordinates, selectedCity, hideChrome = false }) 
           </div>
         )}
 
-        {/* Pure Google Maps embed — clean, borderless */}
+        {/* Your Custom Google My Map Embed */}
         <iframe
           key={mapVersion}
           src={mapUrl}
-          title="Interactive Map"
+          title="Global Presence Map"
           allowFullScreen
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
@@ -63,7 +69,6 @@ const ContactMapContainer = ({ coordinates, selectedCity, hideChrome = false }) 
         />
       </div>
 
-      {/* Footer removed to avoid white space */}
       <style>{`
         .global-map-card { 
           border-radius: 0;
