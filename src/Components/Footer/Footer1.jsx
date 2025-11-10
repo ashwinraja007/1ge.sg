@@ -9,6 +9,7 @@ const Footer1 = () => {
   return (
     <footer className="footer-section" aria-label="Website Footer">
       <div className="container">
+        {/* Main Footer */}
         <div className="footer-main">
           {/* Column 1 - Logo + About */}
           <div className="footer-col">
@@ -19,9 +20,9 @@ const Footer1 = () => {
             />
 
             <p className="footer-text">
-              1 Global Enterprises Pte Ltd is a Singapore-headquartered business 
-              group with diversified interests spanning shipping, logistics and 
-              supply chain solutions, product distribution, renewable and clean 
+              1 Global Enterprises Pte Ltd is a Singapore-headquartered business
+              group with diversified interests spanning shipping, logistics and
+              supply chain solutions, product distribution, renewable and clean
               energy, and global trading.
             </p>
 
@@ -48,7 +49,7 @@ const Footer1 = () => {
             </ul>
           </div>
 
-          {/* Column 3 - Contact */}
+          {/* Column 3 - Contact Info */}
           <div className="footer-col">
             <h4 className="footer-heading">Contact Us</h4>
             <p className="footer-text">
@@ -57,9 +58,13 @@ const Footer1 = () => {
               511 Kampong Bahru Road, <br />
               Singapore 099447
             </p>
+
             <p className="footer-text">
-              <a className="footer-link" href="mailto:info@1ge.sg">info@1ge.sg</a>
+              <a className="footer-link" href="mailto:info@1ge.sg">
+                info@1ge.sg
+              </a>
             </p>
+
             <p className="footer-text">
               <a className="footer-link" href="tel:+6569080838">+65 69080838</a> <br />
               <a className="footer-link" href="tel:+6569080849">+65 69080849</a> <br />
@@ -68,15 +73,17 @@ const Footer1 = () => {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Footer Bottom */}
         <div className="footer-bottom">
           <p>© 1 Global Enterprises, All Rights Reserved.</p>
         </div>
       </div>
 
+      {/* Inline Styles */}
       <style>{`
         .footer-section {
           background: #000;
+          position: relative;
           padding: 60px 0 30px;
           color: #fff;
         }
@@ -135,6 +142,7 @@ const Footer1 = () => {
           font-size: 20px;
           font-weight: 700;
           margin: 12px 0;
+          color: #fff;
         }
 
         .footer-links {
@@ -143,20 +151,30 @@ const Footer1 = () => {
           margin: 0;
         }
 
-        .footer-links li { margin: 8px 0; }
+        .footer-links li {
+          margin: 8px 0;
+        }
+
         .footer-links a {
           color: #fff;
           text-decoration: none;
           opacity: 0.9;
+          transition: opacity 0.25s ease;
         }
-        .footer-links a:hover { opacity: 1; }
+
+        .footer-links a:hover {
+          opacity: 1;
+        }
 
         .footer-link {
           color: #fff;
           text-decoration: none;
           opacity: 0.9;
         }
-        .footer-link:hover { opacity: 1; }
+
+        .footer-link:hover {
+          opacity: 1;
+        }
 
         .footer-social a {
           display: inline-flex;
@@ -171,7 +189,9 @@ const Footer1 = () => {
           transition: opacity 0.25s ease;
         }
 
-        .footer-social a:hover { opacity: 0.8; }
+        .footer-social a:hover {
+          opacity: 0.8;
+        }
 
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.15);
