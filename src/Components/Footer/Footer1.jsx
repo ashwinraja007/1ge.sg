@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom"; // ← fix
 import loadBackgroudImages from "../Common/loadBackgroudImages";
 
 const Footer1 = () => {
@@ -31,6 +30,8 @@ const Footer1 = () => {
               <a
                 href="https://www.linkedin.com/company/1-global-enterprises/"
                 aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="bi bi-linkedin" />
               </a>
@@ -40,11 +41,11 @@ const Footer1 = () => {
           {/* Column 2 - Quick Links */}
           <div className="footer-col">
             <h4 className="footer-heading">Quick Links</h4>
-            <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/activities">Business Verticals</Link></li>
-              <li><Link to="/global-presence">Global Presence</Link></li>
+            <ul className="footer-links" role="list">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/activities">Business Verticals</a></li>
+              <li><a href="/global-presence">Global Presence</a></li>
             </ul>
           </div>
 
@@ -58,7 +59,7 @@ const Footer1 = () => {
               Singapore 099447
             </p>
             <p className="footer-text">
-              <a className="footer-link" href="mailto:jp@1ge.sg">info@1ge.sg</a>
+              <a className="footer-link" href="mailto:info@1ge.sg">info@1ge.sg</a>
             </p>
             <p className="footer-text">
               <a className="footer-link" href="tel:+6569080838">+65 69080838</a> <br />
@@ -73,7 +74,7 @@ const Footer1 = () => {
         {/* Bottom Section */}
         <div className="footer-bottom">
           <p>© 1 Global Enterprises, All Rights Reserved.</p>
-          <ul>{/* legal links if needed */}</ul>
+          <ul role="list">{/* legal links if needed */}</ul>
         </div>
       </div>
 
@@ -121,7 +122,7 @@ const Footer1 = () => {
           opacity: 0.9;
           line-height: 1.7;
           margin: 0 0 12px 0;
-          max-width: 560px; /* keeps lines like the screenshot */
+          max-width: 560px; /* keeps line length like your screenshot */
         }
         /* prevent word splitting/truncation anywhere */
         .no-split {
