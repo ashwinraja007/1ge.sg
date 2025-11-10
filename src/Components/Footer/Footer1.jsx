@@ -9,21 +9,16 @@ const Footer1 = () => {
   return (
     <footer className="footer-section" aria-label="Website Footer">
       <div className="container">
-        {/* Main Footer */}
         <div className="footer-main">
           {/* Column 1 - Logo + About */}
           <div className="footer-col">
-            <img
-              src="/1global1.png"
-              alt="1 Global Enterprises Logo"
-              className="footer-logo"
-            />
+            <img src="/1global1.png" alt="1 Global Enterprises Logo" className="footer-logo" />
 
             <p className="footer-text">
-              1 Global Enterprises Pte Ltd is a Singapore-headquartered business
-              group with diversified interests spanning shipping, logistics and
-              supply chain solutions, product distribution, renewable and clean
-              energy, and global trading.
+              1 Global Enterprises Pte Ltd is a{" "}
+              <span className="nowrap">Singapore&#8209;headquartered</span> business group with
+              diversified interests spanning shipping, logistics and supply chain solutions, product
+              distribution, renewable and clean energy, and global trading.
             </p>
 
             <div className="footer-social">
@@ -58,13 +53,9 @@ const Footer1 = () => {
               511 Kampong Bahru Road, <br />
               Singapore 099447
             </p>
-
             <p className="footer-text">
-              <a className="footer-link" href="mailto:info@1ge.sg">
-                info@1ge.sg
-              </a>
+              <a className="footer-link" href="mailto:info@1ge.sg">info@1ge.sg</a>
             </p>
-
             <p className="footer-text">
               <a className="footer-link" href="tel:+6569080838">+65 69080838</a> <br />
               <a className="footer-link" href="tel:+6569080849">+65 69080849</a> <br />
@@ -73,133 +64,29 @@ const Footer1 = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
         <div className="footer-bottom">
           <p>© 1 Global Enterprises, All Rights Reserved.</p>
         </div>
       </div>
 
-      {/* Inline Styles */}
       <style>{`
-        .footer-section {
-          background: #000;
-          position: relative;
-          padding: 60px 0 30px;
-          color: #fff;
-        }
-
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 16px;
-        }
-
-        .footer-main {
-          display: grid;
-          grid-template-columns: 1.2fr 0.8fr 1fr;
-          gap: 40px;
-          margin-bottom: 40px;
-        }
-
-        @media (max-width: 992px) {
-          .footer-main {
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-          }
-        }
-
-        @media (max-width: 700px) {
-          .footer-main {
-            grid-template-columns: 1fr;
-            gap: 24px;
-          }
-        }
-
-        .footer-col {
-          min-width: 0;
-        }
-
-        .footer-logo {
-          max-height: 60px;
-          margin-bottom: 16px;
-        }
-
-        .footer-text {
-          color: #fff;
-          opacity: 0.9;
-          line-height: 1.7;
-          margin-bottom: 12px;
-          overflow-wrap: break-word;
-          word-wrap: break-word;
-          word-break: normal;
-          hyphens: manual;
-          text-align: left;
-          white-space: normal;
-          max-width: 100%;
-        }
-
-        .footer-heading {
-          font-size: 20px;
-          font-weight: 700;
-          margin: 12px 0;
-          color: #fff;
-        }
-
-        .footer-links {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-
-        .footer-links li {
-          margin: 8px 0;
-        }
-
-        .footer-links a {
-          color: #fff;
-          text-decoration: none;
-          opacity: 0.9;
-          transition: opacity 0.25s ease;
-        }
-
-        .footer-links a:hover {
-          opacity: 1;
-        }
-
-        .footer-link {
-          color: #fff;
-          text-decoration: none;
-          opacity: 0.9;
-        }
-
-        .footer-link:hover {
-          opacity: 1;
-        }
-
-        .footer-social a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          background: #111;
-          color: #fff;
-          margin-right: 6px;
-          transition: opacity 0.25s ease;
-        }
-
-        .footer-social a:hover {
-          opacity: 0.8;
-        }
-
-        .footer-bottom {
-          border-top: 1px solid rgba(255,255,255,0.15);
-          padding-top: 20px;
-          font-size: 14px;
-          opacity: 0.9;
-          text-align: center;
-        }
+        .footer-section { background:#000; padding:60px 0 30px; color:#fff; }
+        .container { max-width:1200px; margin:0 auto; padding:0 16px; }
+        .footer-main { display:grid; grid-template-columns:1.2fr 0.8fr 1fr; gap:40px; margin-bottom:40px; }
+        @media (max-width:992px){ .footer-main{ grid-template-columns:1fr 1fr; gap:32px; } }
+        @media (max-width:700px){ .footer-main{ grid-template-columns:1fr; gap:24px; } }
+        .footer-col{ min-width:0; }
+        .footer-logo{ max-height:60px; margin-bottom:16px; }
+        .footer-heading{ font-size:20px; font-weight:700; margin:12px 0; color:#fff; }
+        .footer-text{ color:#fff; opacity:.9; line-height:1.7; margin-bottom:12px; overflow-wrap:break-word; hyphens:none; }
+        .nowrap{ white-space:nowrap; }  /* <- prevents any break in the phrase */
+        .footer-links{ list-style:none; padding:0; margin:0; }
+        .footer-links li{ margin:8px 0; }
+        .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; }
+        .footer-links a:hover, .footer-link:hover{ opacity:1; }
+        .footer-social a{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:#111; color:#fff; margin-right:6px; transition:opacity .25s; }
+        .footer-social a:hover{ opacity:.8; }
+        .footer-bottom{ border-top:1px solid rgba(255,255,255,.15); padding-top:20px; font-size:14px; opacity:.9; text-align:center; }
       `}</style>
     </footer>
   );
