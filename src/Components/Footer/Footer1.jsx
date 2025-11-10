@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // ← fix
 import loadBackgroudImages from "../Common/loadBackgroudImages";
 
 const Footer1 = () => {
@@ -20,13 +20,20 @@ const Footer1 = () => {
               className="footer-logo"
             />
 
-            
-            <p className="footer-text">
-1 Global Enterprises Pte Ltd is a Singapore-headquartered business group with diversified interests spanning shipping, logistics and supply chain solutions, product distribution, renewable and clean energy, and global trading.
+            <p className="footer-text no-split">
+              1 Global Enterprises Pte Ltd is a Singapore-headquartered business
+              group with diversified interests spanning shipping, logistics and
+              supply chain solutions, product distribution, renewable and clean
+              energy, and global trading.
             </p>
 
             <div className="footer-social">
-              <a href="https://www.linkedin.com/company/1-global-enterprises/" aria-label="LinkedIn"><i className="bi bi-linkedin" /></a>
+              <a
+                href="https://www.linkedin.com/company/1-global-enterprises/"
+                aria-label="LinkedIn"
+              >
+                <i className="bi bi-linkedin" />
+              </a>
             </div>
           </div>
 
@@ -37,16 +44,14 @@ const Footer1 = () => {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/activities">Business Verticals</Link></li>
-                <li><Link to="/global-presence">Global Presence</Link></li>
-            
-              
+              <li><Link to="/global-presence">Global Presence</Link></li>
             </ul>
           </div>
 
           {/* Column 3 - Contact Info */}
           <div className="footer-col">
             <h4 className="footer-heading">Contact Us</h4>
-            <p className="footer-text">
+            <p className="footer-text no-split">
               1 Global Enterprises Pte Ltd <br />
               #03-01, Keppel Distripark, <br />
               511 Kampong Bahru Road, <br />
@@ -61,18 +66,14 @@ const Footer1 = () => {
               <a className="footer-link" href="tel:+6598177292">+65 98177292</a>
             </p>
 
-            <div className="footer-tags">
-             
-            </div>
+            <div className="footer-tags">{/* optional chips */}</div>
           </div>
         </div>
 
         {/* Bottom Section */}
         <div className="footer-bottom">
           <p>© 1 Global Enterprises, All Rights Reserved.</p>
-          <ul>
-            
-          </ul>
+          <ul>{/* legal links if needed */}</ul>
         </div>
       </div>
 
@@ -87,26 +88,23 @@ const Footer1 = () => {
         .footer-section .container {
           position: relative;
           z-index: 1;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 16px;
         }
         .footer-main {
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr 1fr; /* FIXED tighter spacing */
+          grid-template-columns: 1.2fr 0.8fr 1fr;
           gap: 40px;
           margin-bottom: 40px;
         }
         @media (max-width: 992px) {
-          .footer-main {
-            grid-template-columns: 1fr 1fr; /* 2 columns on tablets */
-          }
+          .footer-main { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
-          .footer-main {
-            grid-template-columns: 1fr; /* 1 column on mobile */
-          }
+          .footer-main { grid-template-columns: 1fr; }
         }
-        .footer-col {
-          padding: 0;
-        }
+        .footer-col { padding: 0; }
         .footer-logo {
           max-height: 60px;
           margin-bottom: 16px;
@@ -116,12 +114,21 @@ const Footer1 = () => {
           font-weight: 700;
           margin: 12px 0;
           color: #fff;
+          text-wrap: balance;
         }
         .footer-text {
           color: #fff;
           opacity: 0.9;
           line-height: 1.7;
           margin: 0 0 12px 0;
+          max-width: 560px; /* keeps lines like the screenshot */
+        }
+        /* prevent word splitting/truncation anywhere */
+        .no-split {
+          word-break: normal;
+          overflow-wrap: normal;
+          hyphens: none;
+          white-space: normal;
         }
         .footer-social a {
           margin: 0 6px 0 0;
@@ -136,11 +143,7 @@ const Footer1 = () => {
         }
         .footer-social a:hover { opacity: 0.8; }
 
-        .footer-links {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
         .footer-links li { margin: 8px 0; }
         .footer-links a {
           color: #fff;
@@ -150,11 +153,7 @@ const Footer1 = () => {
         }
         .footer-links a:hover { opacity: 1; }
 
-        .footer-link {
-          color: #fff;
-          text-decoration: none;
-          opacity: 0.9;
-        }
+        .footer-link { color: #fff; text-decoration: none; opacity: 0.9; }
         .footer-link:hover { opacity: 1; }
 
         .footer-tags span {
@@ -178,6 +177,7 @@ const Footer1 = () => {
           font-size: 14px;
           color: #fff;
           opacity: 0.9;
+          gap: 12px;
         }
         .footer-bottom ul {
           display: flex;
@@ -186,11 +186,7 @@ const Footer1 = () => {
           padding: 0;
           margin: 0;
         }
-        .footer-bottom a {
-          color: #fff;
-          text-decoration: none;
-          opacity: 0.9;
-        }
+        .footer-bottom a { color: #fff; text-decoration: none; opacity: 0.9; }
         .footer-bottom a:hover { opacity: 1; }
       `}</style>
     </footer>
