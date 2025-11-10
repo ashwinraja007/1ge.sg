@@ -77,36 +77,9 @@ const Footer1 = () => {
         @media (max-width:700px){ .footer-main{ grid-template-columns:1fr; gap:24px; } }
         .footer-col{ min-width:0; }
         .footer-logo{ max-height:60px; margin-bottom:16px; }
-        
-        /* TEXT STYLING */
-        .footer-text{
-          color:#fff;
-          opacity:.9;
-          line-height:1.7;
-          margin-bottom:12px;
-          font-size:16px;
-          overflow-wrap:break-word;
-          white-space:normal;
-        }
-        /* “is a Singapore-headquartered” must stay on one line */
-        .nowrap{
-          white-space:nowrap;
-        }
-        /* Responsive text size scaling */
-        @media (max-width:1024px){
-          .footer-text{ font-size:15px; }
-        }
-        @media (max-width:800px){
-          .footer-text{ font-size:14px; }
-        }
-        @media (max-width:600px){
-          .footer-text{ font-size:13px; line-height:1.6; }
-        }
-        @media (max-width:480px){
-          .footer-text{ font-size:12.5px; line-height:1.5; }
-        }
-
         .footer-heading{ font-size:20px; font-weight:700; margin:12px 0; color:#fff; }
+        .footer-text{ color:#fff; opacity:.9; line-height:1.7; margin-bottom:12px; overflow-wrap:break-word; white-space:normal; }
+        .nowrap{ white-space:nowrap; } /* keeps “is a Singapore-headquartered” on one line */
         .footer-links{ list-style:none; padding:0; margin:0; }
         .footer-links li{ margin:8px 0; }
         .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; transition:opacity .25s; }
