@@ -15,10 +15,10 @@ const Footer1 = () => {
             <img src="/1global1.png" alt="1 Global Enterprises Logo" className="footer-logo" />
 
             <p className="footer-text">
-              1 Global Enterprises Pte Ltd{" "}
-              <span className="nowrap">is a Singapore&#8209;headquartered</span> business group with
-              diversified interests spanning shipping, logistics and supply chain solutions,
-              product distribution, renewable and clean energy, and global trading.
+              1 Global Enterprises Pte Ltd is a{" "}
+              <span className="nowrap">Singapore&#8209;headquartered</span> business group with
+              diversified interests spanning shipping, logistics and supply chain solutions, product
+              distribution, renewable and clean energy, and global trading.
             </p>
 
             <div className="footer-social">
@@ -78,11 +78,11 @@ const Footer1 = () => {
         .footer-col{ min-width:0; }
         .footer-logo{ max-height:60px; margin-bottom:16px; }
         .footer-heading{ font-size:20px; font-weight:700; margin:12px 0; color:#fff; }
-        .footer-text{ color:#fff; opacity:.9; line-height:1.7; margin-bottom:12px; overflow-wrap:break-word; white-space:normal; }
-        .nowrap{ white-space:nowrap; } /* keeps “is a Singapore-headquartered” on one line */
+        .footer-text{ color:#fff; opacity:.9; line-height:1.7; margin-bottom:12px; overflow-wrap:break-word; hyphens:none; }
+        .nowrap{ white-space:nowrap; }  /* <- prevents any break in the phrase */
         .footer-links{ list-style:none; padding:0; margin:0; }
         .footer-links li{ margin:8px 0; }
-        .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; transition:opacity .25s; }
+        .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; }
         .footer-links a:hover, .footer-link:hover{ opacity:1; }
         .footer-social a{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:#111; color:#fff; margin-right:6px; transition:opacity .25s; }
         .footer-social a:hover{ opacity:.8; }
