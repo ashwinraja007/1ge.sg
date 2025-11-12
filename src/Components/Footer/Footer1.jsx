@@ -6,19 +6,29 @@ const Footer1 = () => {
     loadBackgroudImages();
   }, []);
 
+  const handleCopy = (number: string) => {
+    navigator.clipboard.writeText(number);
+    alert(`Copied: ${number}`);
+  };
+
   return (
     <footer className="footer-section" aria-label="Website Footer">
       <div className="container">
         <div className="footer-main">
           {/* Column 1 - Logo + About */}
           <div className="footer-col">
-            <img src="/1global1.png" alt="1 Global Enterprises Logo" className="footer-logo" />
+            <img
+              src="/1global1.png"
+              alt="1 Global Enterprises Logo"
+              className="footer-logo"
+            />
 
             <p className="footer-text">
               1 Global Enterprises Pte Ltd is a{" "}
-              <span className="nowrap">Singapore&#8209;headquartered</span> business group with
-              diversified interests spanning shipping, logistics and supply chain solutions, product
-              distribution, renewable and clean energy, and global trading.
+              <span className="nowrap">Singapore&#8209;headquartered</span>{" "}
+              business group with diversified interests spanning shipping,
+              logistics and supply chain solutions, product distribution,
+              renewable and clean energy, and global trading.
             </p>
 
             <div className="footer-social">
@@ -37,10 +47,18 @@ const Footer1 = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/our-business-verticals">Business Verticals</a></li>
-              <li><a href="/global-presence">Global Presence</a></li>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/about">About Us</a>
+              </li>
+              <li>
+                <a href="/our-business-verticals">Business Verticals</a>
+              </li>
+              <li>
+                <a href="/global-presence">Global Presence</a>
+              </li>
             </ul>
           </div>
 
@@ -54,12 +72,35 @@ const Footer1 = () => {
               Singapore 099447
             </p>
             <p className="footer-text">
-              <a className="footer-link" href="mailto:info@1ge.sg">info@1ge.sg</a>
+              <a className="footer-link" href="mailto:info@1ge.sg">
+                info@1ge.sg
+              </a>
             </p>
+
             <p className="footer-text">
-              <a className="footer-link" href="tel:+6569080838">+65 69080838</a> <br />
-              <a className="footer-link" href="tel:+6569080849">+65 69080849</a> <br />
-              <a className="footer-link" href="tel:+6598177292">+65 98177292</a>
+              <span
+                className="footer-link cursor-pointer"
+                onClick={() => handleCopy("+65 69080838")}
+                title="Click to copy"
+              >
+                +65 69080838
+              </span>{" "}
+              <br />
+              <span
+                className="footer-link cursor-pointer"
+                onClick={() => handleCopy("+65 69080849")}
+                title="Click to copy"
+              >
+                +65 69080849
+              </span>{" "}
+              <br />
+              <span
+                className="footer-link cursor-pointer"
+                onClick={() => handleCopy("+65 98177292")}
+                title="Click to copy"
+              >
+                +65 98177292
+              </span>
             </p>
           </div>
         </div>
@@ -79,11 +120,12 @@ const Footer1 = () => {
         .footer-logo{ max-height:60px; margin-bottom:16px; }
         .footer-heading{ font-size:20px; font-weight:700; margin:12px 0; color:#fff; }
         .footer-text{ color:#fff; opacity:.9; line-height:1.7; margin-bottom:12px; overflow-wrap:break-word; hyphens:none; }
-        .nowrap{ white-space:nowrap; }  /* <- prevents any break in the phrase */
+        .nowrap{ white-space:nowrap; }
         .footer-links{ list-style:none; padding:0; margin:0; }
         .footer-links li{ margin:8px 0; }
-        .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; }
+        .footer-links a, .footer-link{ color:#fff; text-decoration:none; opacity:.9; transition:opacity .25s; }
         .footer-links a:hover, .footer-link:hover{ opacity:1; }
+        .footer-link.cursor-pointer:hover { text-decoration:underline; }
         .footer-social a{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:#111; color:#fff; margin-right:6px; transition:opacity .25s; }
         .footer-social a:hover{ opacity:.8; }
         .footer-bottom{ border-top:1px solid rgba(255,255,255,.15); padding-top:20px; font-size:14px; opacity:.9; text-align:center; }
