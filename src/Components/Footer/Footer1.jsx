@@ -6,9 +6,19 @@ const Footer1 = () => {
     loadBackgroudImages();
   }, []);
 
-  const handleCopy = (number: string) => {
-    navigator.clipboard.writeText(number);
-    alert(`Copied: ${number}`);
+  const handleCopy = (num) => {
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(num);
+      alert(`Copied: ${num}`);
+    } else {
+      // Fallback for older browsers
+      const ta = document.createElement("textarea");
+      ta.value = num;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); alert(`Copied: ${num}`); }
+      finally { document.body.removeChild(ta); }
+    }
   };
 
   return (
@@ -47,18 +57,10 @@ const Footer1 = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/about">About Us</a>
-              </li>
-              <li>
-                <a href="/our-business-verticals">Business Verticals</a>
-              </li>
-              <li>
-                <a href="/global-presence">Global Presence</a>
-              </li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/our-business-verticals">Business Verticals</a></li>
+              <li><a href="/global-presence">Global Presence</a></li>
             </ul>
           </div>
 
@@ -72,11 +74,8 @@ const Footer1 = () => {
               Singapore 099447
             </p>
             <p className="footer-text">
-              <a className="footer-link" href="mailto:info@1ge.sg">
-                info@1ge.sg
-              </a>
+              <a className="footer-link" href="mailto:info@1ge.sg">info@1ge.sg</a>
             </p>
-
             <p className="footer-text">
               <span
                 className="footer-link cursor-pointer"
@@ -84,16 +83,14 @@ const Footer1 = () => {
                 title="Click to copy"
               >
                 +65 69080838
-              </span>{" "}
-              <br />
+              </span><br />
               <span
                 className="footer-link cursor-pointer"
                 onClick={() => handleCopy("+65 69080849")}
                 title="Click to copy"
               >
                 +65 69080849
-              </span>{" "}
-              <br />
+              </span><br />
               <span
                 className="footer-link cursor-pointer"
                 onClick={() => handleCopy("+65 98177292")}
